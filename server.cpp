@@ -45,16 +45,16 @@ int main() {
 
     ws.accept();
 
+    std::string message;
+    auto buf = net::dynamic_buffer(message);
+
     for(;;) {
-
-        std::string message;
-        auto buf = net::dynamic_buffer(message);
+        buf.consume(buf.size());
         ws.read(buf);
-
+  
         std::cout << "Message received " << message << std::endl;
         ws.write(buf.data());
-
-        // ws.close(websocket::close_code::too_big);
+        
     }
 
   } catch (const std::exception& e ) {
