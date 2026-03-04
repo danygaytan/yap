@@ -63,7 +63,7 @@ class Client: public std::enable_shared_from_this<Client> {
   }
 
   public:
-  void startChannel() {
+  void connect() {
     try {
       auto results = this->resolver.resolve(host_address, host_service_port);
       auto endpoint = net::connect(this->ws.next_layer(), results);
@@ -88,7 +88,7 @@ class Client: public std::enable_shared_from_this<Client> {
     ioc.run();
   }
 
-  void closeChannel() {
+  void disconnect() {
     this->ws.close(websocket::close_code::normal);
   };
 
@@ -163,7 +163,7 @@ int main(int argc, char** argv) {
 
   std::thread t1(&Client::read_user_input, client);
 
-  client->startChannel();
+  client->connect();
   client->run();
 
   t1.join();
