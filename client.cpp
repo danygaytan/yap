@@ -10,7 +10,6 @@
 #include <boost/smart_ptr/shared_ptr.hpp>
 #include <cstddef>
 #include <exception>
-#include <filesystem>
 #include <ftxui/screen/screen.hpp>
 #include <boost/asio/connect.hpp>
 #include <boost/asio/ip/tcp.hpp>
@@ -92,7 +91,6 @@ class Client: public std::enable_shared_from_this<Client> {
     this->ws.close(websocket::close_code::normal);
   };
 
-
   public:
   void do_write() {
     try {
@@ -159,7 +157,6 @@ int main(int argc, char** argv) {
   std::string host_address = argv[1];
   std::string host_service_port = argv[2];
   auto client = std::make_shared<Client>(host_address, host_service_port);
-
 
   std::thread t1(&Client::read_user_input, client);
 
