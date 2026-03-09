@@ -38,7 +38,7 @@ private:
     int role;
 
 public:
-    Websocket(std::string& host_address, std::string& host_service_port, tcp::socket socket, int role);
+    Websocket(std::string& host_address, std::string& host_service_port, tcp::socket& socket, int role);
     void handshake(net::io_context& ioc);
     void run(net::io_context& ioc);
     void disconnect();

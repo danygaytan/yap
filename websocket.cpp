@@ -19,7 +19,7 @@ enum role_codes {
     CLIENT = 1
 };
 
-Websocket::Websocket(std::string& host_address, std::string& host_service_port, tcp::socket socket, int role):
+Websocket::Websocket(std::string& host_address, std::string& host_service_port, tcp::socket& socket, int role):
   ws(std::move(socket)),
   host_address(host_address),
   host_service_port(host_service_port),
