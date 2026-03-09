@@ -23,10 +23,11 @@
 
 namespace beast = boost::beast;
 namespace websocket = beast::websocket;
+namespace http = beast::http;
 namespace net = boost::asio;
 using tcp = boost::asio::ip::tcp;
 
-class Websocket {
+class Websocket: public std::enable_shared_from_this<Websocket> {
 private:
     std::string host_address;
     std::string host_service_port;
