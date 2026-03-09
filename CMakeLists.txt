@@ -17,17 +17,9 @@ FetchContent_MakeAvailable(ftxui)
 set(Boost_NO_BOOST_CMAKE ON)
 find_package(Boost REQUIRED)
  
-add_executable(client client.cpp)
-add_executable(server server.cpp)
+add_executable(yap yap.cpp websocket.cpp)
 
-target_link_libraries(client
-  PRIVATE ftxui::dom
-  PRIVATE ftxui::screen
-  PRIVATE ftxui::component
-  PRIVATE Boost::boost
-)
-
-target_link_libraries(server
+target_link_libraries(yap
   PRIVATE ftxui::dom
   PRIVATE ftxui::screen
   PRIVATE ftxui::component
