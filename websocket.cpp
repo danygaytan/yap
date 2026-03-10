@@ -29,20 +29,21 @@ Websocket::Websocket(std::string& host_address, std::string& host_service_port, 
 void Websocket::Websocket::handshake(net::io_context& ioc) {
   try {
       if(this->role == CLIENT) {
-          tcp::resolver resolver{ioc};
-          auto results = resolver.resolve(this->host_address, this->host_service_port);
-          std::string address_and_port = this->host_address + ':' + this->host_service_port;
+        tcp::resolver resolver{ioc};
+        auto results = resolver.resolve(this->host_address, this->host_service_port);
+        auto endpoint = net::connect(this->ws.next_layer(), results);
+        std::string address_and_port = this->host_address + ':' + this->host_service_port;
 
-          this->ws.set_option(websocket::stream_base::decorator(
-            [](websocket::request_type& req)
-            {
-                req.set(http::field::user_agent,
-                    std::string(BOOST_BEAST_VERSION_STRING) +
-                        " websocket-client-coro");
-            }));
-  
-          this->ws.handshake(address_and_port, "/");
-          return;
+        this->ws.set_option(websocket::stream_base::decorator(
+          [](websocket::request_type& req)
+          {
+              req.set(http::field::user_agent,
+                  std::string(BOOST_BEAST_VERSION_STRING) +
+                      " websocket-client-coro");
+          }));
+
+        this->ws.handshake(address_and_port, "/");
+        return;
       }
 
       this->ws.set_option(websocket::stream_base::decorator(
@@ -54,7 +55,6 @@ void Websocket::Websocket::handshake(net::io_context& ioc) {
               }));
 
       this->ws.accept();
-
       return;
   } catch (const std::exception& e) {
       std::cout << "Error in handshake: " << e.what() << std::endl;

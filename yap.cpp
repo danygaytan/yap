@@ -26,7 +26,6 @@ int main(int argc, char** argv) {
 
     websocket->handshake(ioc);
     websocket->run(ioc);
-
     t1.join();
 
     return 0;
