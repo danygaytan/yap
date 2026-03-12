@@ -1,10 +1,10 @@
-# ADR 001: Websockets over other communication protocol
+# ADR 001: Websockets over other protocols
 
 ## Status
 Accepted
 
 ## Context
-Yap is a messaging app functioning on top of a terminal / cli. Therefore, it needs a mechanism to send and receive
+Yap is a messaging app functioning on top of a terminal. Therefore, it needs a mechanism to send and receive
 messages to multiple users on different sessions. Additionally, I want Yap to be decentralized, no
 additional servers or nodes involved in sending and receiving messages, at least for 1 to 1 conversations.
 
