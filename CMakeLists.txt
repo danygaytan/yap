@@ -17,7 +17,18 @@ FetchContent_MakeAvailable(ftxui)
 set(Boost_NO_BOOST_CMAKE ON)
 find_package(Boost REQUIRED)
  
-add_executable(yap yap.cpp websocket.cpp)
+add_executable(yap
+yap.cpp
+websocket.cpp
+ui/components/chat/header/billboard.cpp
+ui/components/chat/header/contact.cpp
+ui/components/chat/header/menu.cpp
+ui/components/chat/feed/conversation.cpp
+ui/components/chat/footer/input.cpp
+ui/components/chat/chat.cpp
+)
+
+
 
 target_link_libraries(yap
   PRIVATE ftxui::dom
