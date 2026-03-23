@@ -24,6 +24,7 @@ ui/components/chat/header/billboard.cpp
 ui/components/chat/header/contact.cpp
 ui/components/chat/header/menu.cpp
 ui/components/chat/feed/conversation.cpp
+ui/components/chat/feed/message.cpp
 ui/components/chat/footer/input.cpp
 ui/components/chat/chat.cpp
 )

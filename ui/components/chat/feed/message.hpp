@@ -1,3 +1,4 @@
+#include <boost/smart_ptr/enable_shared_from_this.hpp>
 #include <boost/smart_ptr/shared_ptr.hpp>
 #include <ftxui/component/component_base.hpp>
 #include <ftxui/component/component_options.hpp>
@@ -7,11 +8,14 @@
 #include <ftxui/dom/elements.hpp>
 #include <ftxui/screen/string.hpp>
 
-class MessageComponent {
+using namespace ftxui;
+
+class MessageComponent: public ComponentBase, std::enable_shared_from_this<ComponentBase>{
 
 private:
     std::string content;
-    std::string sender_username;
+    std::string sender;
 public:
-    MessageComponent();
+    MessageComponent(std::string content, std::string sender);
+    Element OnRender();
 };

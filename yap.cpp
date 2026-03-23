@@ -40,7 +40,7 @@ int main(int argc, char** argv) {
 
     // Create dummy component
 
-    Chat chat("test", "test");
+    Chat chat("Daniel", "DGServer");
     chat.start();
     
     return 0;

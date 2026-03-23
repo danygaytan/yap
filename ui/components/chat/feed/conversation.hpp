@@ -5,14 +5,17 @@
 #include <ftxui/component/component.hpp>
 #include <ftxui/dom/elements.hpp>
 #include <ftxui/screen/string.hpp>
+#include "message.hpp"
 #include <memory>
 
 using namespace ftxui;
 
 class ConversationComponent: public ComponentBase, std::enable_shared_from_this<ComponentBase> {
 private:
-    std::vector<Element> messages;
+    Elements messages; // coming from MessageComponent
 public:
-    ConversationComponent();
+    ConversationComponent(std::vector<std::string> messages);
     Element OnRender();
+    void AddNewMessage();
+
 }; 

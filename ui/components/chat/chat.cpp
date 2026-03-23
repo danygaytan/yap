@@ -16,8 +16,9 @@ void Chat::start() {
             menu | flex
         }) | xflex | border | size(HEIGHT, GREATER_THAN, 5);
 
-        // Body or Chat feed 
-        Component conversation = std::make_shared<ConversationComponent>();
+        // Body or Chat feed
+        std::vector<std::string> messages{"Hello!!!!", "Friendly ping!"};
+        Component conversation = std::make_shared<ConversationComponent>(messages);
 
         // Footer or Input wrapper
         Component footer = std::make_shared<InputWrapperComponent>();
