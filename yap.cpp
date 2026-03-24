@@ -1,5 +1,5 @@
-#include "websocket.hpp"
-#include "ui/components/chat/chat.hpp"
+#include "include/websocket.hpp"
+#include "include/chat.hpp"
 #include <boost/smart_ptr/shared_ptr.hpp>
 #include <ftxui/component/component_base.hpp>
 #include <ftxui/component/component_options.hpp>

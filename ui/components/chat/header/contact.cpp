@@ -1,4 +1,4 @@
-#include "contact.hpp"
+#include "../../../../include/contact.hpp"
 #include "ftxui/dom/elements.hpp"
 #include "ftxui/screen/color.hpp"
 

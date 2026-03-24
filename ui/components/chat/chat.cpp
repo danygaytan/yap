@@ -1,4 +1,6 @@
-#include "chat.hpp"
+#include "../../../../include/chat.hpp"
+#include <memory>
+#include <vector>
 
 Chat::Chat(std::string contact_username, std::string server_handler):
     contact_username(contact_username),
@@ -18,11 +20,19 @@ void Chat::start() {
 
         // Body or Chat feed
         std::vector<std::string> messages{"Hello!!!!", "Friendly ping!"};
-        Component conversation = std::make_shared<ConversationComponent>(messages);
+
+        auto dummy_message = Message({
+            "This is a message",
+            "Sender"
+        });
+        auto active_conversation_input = std::vector<Message>{dummy_message};
+        auto active_conversation = std::make_shared<std::vector<Message>>(active_conversation_input);
+        auto conversation = std::make_shared<ConversationComponent>(active_conversation);
 
         // Footer or Input wrapper
         Component footer = std::make_shared<InputWrapperComponent>();
 
+        // Create Main window
         Component chat_window = Container::Vertical({
             header,
             conversation,

@@ -1,4 +1,4 @@
-#include "message.hpp"
+#include "../../../../include/message.hpp"
 
 MessageComponent::MessageComponent(std::string content, std::string sender):
 content(content),

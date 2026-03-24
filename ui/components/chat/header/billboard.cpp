@@ -1,4 +1,4 @@
-#include "billboard.hpp"
+#include "../../../../include/billboard.hpp"
 
 BillboardComponent::BillboardComponent(){};
 Element BillboardComponent::OnRender(){

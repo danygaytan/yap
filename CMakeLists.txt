@@ -29,12 +29,34 @@ ui/components/chat/footer/input.cpp
 ui/components/chat/chat.cpp
 )
 
-
-
 target_link_libraries(yap
   PRIVATE ftxui::dom
   PRIVATE ftxui::screen
   PRIVATE ftxui::component
   PRIVATE Boost::boost
+)
+
+add_library(yap_lib
+yap.cpp
+websocket.cpp
+ui/components/chat/header/billboard.cpp
+ui/components/chat/header/contact.cpp
+ui/components/chat/header/menu.cpp
+ui/components/chat/feed/conversation.cpp
+ui/components/chat/feed/message.cpp
+ui/components/chat/footer/input.cpp
+ui/components/chat/chat.cpp
+)
+
+target_link_libraries(yap_lib
+  PRIVATE ftxui::dom
+  PRIVATE ftxui::screen
+  PRIVATE ftxui::component
+  PRIVATE Boost::boost
+)
+
+
+target_include_directories(yap_lib
+  PRIVATE include
 )
 

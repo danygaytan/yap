@@ -1,3 +1,9 @@
+#include "contact.hpp"
+#include "menu.hpp"
+#include "billboard.hpp"
+#include "conversation.hpp"
+#include "input.hpp"
+#include <boost/smart_ptr/shared_ptr.hpp>
 #include <ftxui/component/component_base.hpp>
 #include <ftxui/component/component_options.hpp>
 #include <ftxui/screen/screen.hpp>
@@ -5,17 +11,14 @@
 #include <ftxui/component/component.hpp>
 #include <ftxui/dom/elements.hpp>
 #include <ftxui/screen/string.hpp>
-#include "message.hpp"
 #include <memory>
 
-using namespace ftxui;
+class Chat {
 
-class ConversationComponent: public ComponentBase, std::enable_shared_from_this<ComponentBase> {
 private:
-    Elements messages; // coming from MessageComponent
+    std::string contact_username;
+    std::string server_handler;
 public:
-    ConversationComponent(std::vector<std::string> messages);
-    Element OnRender();
-    void AddNewMessage();
-
-}; 
+    Chat(std::string contact_username, std::string server_handler);
+    void start();
+};
