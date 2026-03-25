@@ -8,6 +8,7 @@
 #include <ftxui/component/component.hpp>
 #include <ftxui/dom/elements.hpp>
 #include <ftxui/screen/string.hpp>
+#include <memory>
 
 using namespace ftxui;
 
@@ -40,7 +41,14 @@ int main(int argc, char** argv) {
 
     // Create dummy component
 
-    Chat chat("Daniel", "DGServer");
+
+    AppState app_state = {
+        {{}, {"Contact test", "online"}},
+        {"Username test"}
+    };
+    auto app_state_shared_ptr = std::make_shared<AppState>(app_state);
+
+    Chat chat(app_state_shared_ptr);
     chat.start();
     
     return 0;

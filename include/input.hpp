@@ -16,4 +16,5 @@ private:
 public:
     InputWrapperComponent();
     Element OnRender();
+    virtual bool OnEvent(Event event);
 }; 

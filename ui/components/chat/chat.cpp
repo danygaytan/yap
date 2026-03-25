@@ -2,15 +2,14 @@
 #include <memory>
 #include <vector>
 
-Chat::Chat(std::string contact_username, std::string server_handler):
-    contact_username(contact_username),
-    server_handler(server_handler)
+Chat::Chat(std::shared_ptr<AppState> app_state):
+    app_state(app_state)
     {};
 
 void Chat::start() {
         // Header
         Component billboard = std::make_shared<BillboardComponent>();
-        Component contact = std::make_shared<Contact>(contact_username, 1);
+        Component contact = std::make_shared<Contact>(app_state->active_conversation.contact);
         Component menu = std::make_shared<MenuComponent>();
         Component header = Container::Horizontal({
             billboard | flex,
@@ -19,8 +18,6 @@ void Chat::start() {
         }) | xflex | border | size(HEIGHT, GREATER_THAN, 5);
 
         // Body or Chat feed
-        std::vector<std::string> messages{"Hello!!!!", "Friendly ping!"};
-
         auto dummy_message = Message({
             "This is a message",
             "Sender"

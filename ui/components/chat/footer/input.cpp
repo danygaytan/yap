@@ -18,3 +18,14 @@ Element InputWrapperComponent::OnRender() {
         Element flexbox = ftxui::flexbox(elements, flexbox_config) | border | size(HEIGHT, EQUAL, 3);
         return flexbox;
     };
+
+bool InputWrapperComponent::OnEvent(Event event) {
+    ComponentBase::OnEvent(event);
+    if(event == Event::Return) {
+        // push send_message notification to orchestrator
+        std::string message = this->message_input;
+        this->message_input.clear();
+        return true;
+    }
+    return false;
+};

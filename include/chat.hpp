@@ -16,9 +16,8 @@
 class Chat {
 
 private:
-    std::string contact_username;
-    std::string server_handler;
+    std::shared_ptr<AppState> app_state;
 public:
-    Chat(std::string contact_username, std::string server_handler);
+    Chat(std::shared_ptr<AppState> app_state);
     void start();
 };
